@@ -1,0 +1,28 @@
+name: Terraform CI - Lint
+
+on:
+  [push]
+
+jobs:
+  tf_lint:
+    name: 'Terraform lint (on tf ${{ matrix.terraform_version }})'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        terraform_version: [ '~1.5.0', '~1.6.0', '~1.7.0', 'latest'] # in theory, we go down to 1.0, but I think that's overkill for lint
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: 'setup Terraform'
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ matrix.terraform_version }}
+
+      - name: 'lint Terraform code'
+        # see https://www.terraform.io/cli/commands/fmt
+        run:
+          terraform fmt -check -recursive -diff .
