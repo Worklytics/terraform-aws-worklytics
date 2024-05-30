@@ -1,5 +1,5 @@
 resource "local_file" "worklytics_tenant_api_script_file" {
-  content = <<EOT
+  content         = <<EOT
 #!/bin/bash
 
 # Script to set up a Psoxy connection for ${var.psoxy_connection.integration}
@@ -24,6 +24,6 @@ curl -X POST https://${var.tenant_api_host}/tenant-api/data-connections \
         }
      }'
 EOT
-  filename = "${coalesce(var.psoxy_connection_script_path, path.module)}/create_${var.psoxy_connection.integration}_connection.sh"
+  filename        = "${coalesce(var.psoxy_connection_script_path, path.module)}/create_${var.psoxy_connection.integration}_connection.sh"
   file_permission = "0755"
 }

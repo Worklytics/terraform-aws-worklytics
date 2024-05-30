@@ -41,6 +41,6 @@ variable "psoxy_connection" {
 }
 
 variable "psoxy_connection_script_path" {
-  type = string
+  type        = string
   description = "Where to create the script to create the Psoxy connection"
 }

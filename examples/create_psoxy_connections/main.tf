@@ -14,7 +14,7 @@ module "create_psoxy_connection_script" {
   source = "../../modules/psoxy_connection"
 
   for_each = {
-    for psoxy_connection in var.psoxy_connections:
+    for psoxy_connection in var.psoxy_connections :
     psoxy_connection.integration => psoxy_connection
   }
   psoxy_connection = {
