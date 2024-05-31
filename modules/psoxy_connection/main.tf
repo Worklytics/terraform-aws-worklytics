@@ -10,7 +10,7 @@ TOKEN=`aws cognito-identity get-open-id-token-for-developer-identity \
   --region ${var.identity_pool_region} \
   | jq -r '.Token'`
 
-curl -X POST https://${var.tenant_api_host}/tenant-api/data-connections \
+curl -X POST https://${var.tenant_api_host}/tenant/data-connections \
   -H "Authorization: Bearer $TOKEN" \
   -H "x-worklytics-tenant-id: ${var.worklytics_tenant_id}"\
   -H "Content-Type: application/json" \
