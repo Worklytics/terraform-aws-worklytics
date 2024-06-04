@@ -19,7 +19,7 @@ resource "aws_cognito_identity_pool" "worklytics_identity_pool" {
 }
 
 resource "aws_iam_policy" "cognito_developer_identities" {
-  name        = "${aws_cognito_identity_pool.worklytics_identity_pool.identity_pool_name}_CognitoDeveloperIdentity"
+  name        = "${aws_cognito_identity_pool.worklytics_identity_pool.identity_pool_name}_CognitoDeveloperIdentityForWorklyticsTerraform"
   description = "Allow principal to read and lookup developer identities from Cognito Identity: ${aws_cognito_identity_pool.worklytics_identity_pool.id}"
 
   policy = jsonencode(
