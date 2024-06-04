@@ -28,3 +28,15 @@ jobs:
         run: |
           terraform init
           terraform validate
+
+      - name: 'Terraform - validate modules/cognito_tenant_api_auth'
+        working-directory: modules/cognito_tenant_api_auth
+        run: |
+          terraform init
+          terraform validate
+
+      - name: 'Terraform - validate modules/psoxy_connection'
+        working-directory: modules/psoxy_connection
+        run: |
+          terraform init
+          terraform validate
