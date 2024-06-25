@@ -33,11 +33,11 @@ variable "user_principal_email" {
 
 variable "psoxy_connections" {
   type = list(object({
-    integration = string
-    endpoint    = string
-    region      = string
-    role_arn    = string
-    parser_id    = optional(string)
+    integration         = string
+    endpoint            = string
+    region              = string
+    role_arn            = string
+    parser_id           = optional(string)
     github_organization = optional(string)
   }))
   description = "The connection details for Psoxy connections to be created via Worklytics Tenant API."

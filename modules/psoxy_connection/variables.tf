@@ -31,11 +31,11 @@ variable "identity_pool_region" {
 
 variable "psoxy_connection" {
   type = object({
-    integration = string # The integration ID to use for this connection.
-    endpoint    = string # The URL of the lambda function to use for this connection.
-    region      = string # The AWS region of the lambda function.
-    role_arn    = string # The ARN role to invoke the lambda function.
-    parser_id    = optional(string) # Required only for Bulk Connections.
+    integration         = string           # The integration ID to use for this connection.
+    endpoint            = string           # The URL of the lambda function to use for this connection.
+    region              = string           # The AWS region of the lambda function.
+    role_arn            = string           # The ARN role to invoke the lambda function.
+    parser_id           = optional(string) # Required only for Bulk Connections.
     github_organization = optional(string) # Required only for GitHub Connections.
   })
   description = "The connection details for a Psoxy connection to be created via Worklytics Tenant API."

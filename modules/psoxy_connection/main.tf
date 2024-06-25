@@ -1,6 +1,6 @@
 
 locals {
-  psoxy_connection_script_path = "${coalesce(var.psoxy_connection_script_path, path.module)}/"
+  psoxy_connection_script_path     = "${coalesce(var.psoxy_connection_script_path, path.module)}/"
   psoxy_connection_script_filename = coalesce(var.psoxy_connection_script_filename, "create_${var.psoxy_connection.integration}_connection.sh")
 }
 
