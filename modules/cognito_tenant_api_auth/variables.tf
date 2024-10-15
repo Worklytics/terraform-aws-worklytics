@@ -14,6 +14,10 @@ variable "worklytics_tenant_id" {
   }
 }
 
+# This will appear in the AWS console (Amazon Cognito > Identity Pools > Identity Pool Name) as a "Linked login" in
+# identity browser of the pool. In development, don't use `localhost:8080` as this is used as the value for
+# `developer_provider_name` pool which is subject to some restrictions: only alphanumeric characters, dots, underscores
+# and hyphens
 variable "tenant_api_host" {
   type        = string
   description = "Host of the Worklytics Tenant API: the domain by which Cognito will refer users."
