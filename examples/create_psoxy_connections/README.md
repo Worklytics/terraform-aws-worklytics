@@ -20,7 +20,10 @@ psoxy_connections = [{
 }]
 ```
 
-- `worklytics_tenant_id` is the unique ID of your Worklytics tenant.
-- `user_principal_email` is the email of the user principal that will be used to authenticate with the Tenant API, and
-  must be registered as `DataConnectionAdmin` via the Worklytics Web App.
+- `worklytics_tenant_id` is the unique ID of your Worklytics tenant (obtain from Worklytics Web App).
+- `user_principal_email` is the email of the user principal that will be used to authenticate with the Tenant API, 
+and must be registered as `DataConnectionAdmin` via the Worklytics Web App.
 - `psoxy_connections` is a collection of the attributes for each Data Source configured in your Psoxy instance.
+
+**Once the Terraform script is executed, and the shell script is created, make sure that the user principal email is
+registered as `DataConnectionAdmin` in the Worklytics Web App.**
