@@ -33,12 +33,18 @@ variable "user_principal_email" {
 
 variable "psoxy_connections" {
   type = list(object({
-    integration         = string
-    endpoint            = string
-    region              = string
-    role_arn            = string
-    parser_id           = optional(string)
-    github_organization = optional(string)
+    integration         = string           # The integration ID to use for this connection.
+    region              = string           # The AWS region of the Proxy instance.
+    role_arn            = string           # The ARN role to invoke the Proxy instance.
+    endpoint            = optional(string) # The endpoint of the lambda function (Work Data connections use-case).
+    bucket              = optional(string) # The S3 bucket (Bulk Data connections use-case).
+    parser_id           = optional(string) # Bulk Data connections only.
+    github_organization = optional(string) # GitHub Connections only.
   }))
   description = "The connection details for Psoxy connections to be created via Worklytics Tenant API."
+}
+
+variable "psoxy_connection_script_path" {
+  type        = string
+  description = "Where to create the script to create the Psoxy connection"
 }
