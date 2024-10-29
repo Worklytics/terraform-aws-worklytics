@@ -1,5 +1,3 @@
-# TODO modules referenced by relative path until published in registry, or in a public repo
-
 # create the resources needed to auth with the Worklytics Tenant API
 module "tenant_api_auth" {
   source = "../../modules/cognito_tenant_api_auth"
@@ -24,13 +22,14 @@ module "create_psoxy_connection_script" {
   }
   psoxy_connection = {
     integration         = each.value.integration
-    endpoint            = each.value.endpoint
     region              = each.value.region
     role_arn            = each.value.role_arn
+    endpoint            = each.value.endpoint
+    bucket              = each.value.bucket
     parser_id           = each.value.parser_id
     github_organization = each.value.github_organization
   }
-  psoxy_connection_script_path     = path.module
+  psoxy_connection_script_path     = coalesce(var.psoxy_connection_script_path, path.module)
   psoxy_connection_script_filename = "create_${each.value.integration}-${index(var.psoxy_connections, each.value) + 1}_connection.sh"
 
   tenant_api_host      = var.tenant_api_host
